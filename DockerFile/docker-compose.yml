@@ -1,0 +1,18 @@
+services:
+  frontend:
+    container_name: vue_frontend
+    build: 
+      context: ../FrontEnd_Vue  # Matches your folder name
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend  # Frontend should depend on backend, but backend should NOT depend on frontend
+
+  backend:
+    container_name: nestjs_backend
+    build: 
+      context: ../Backend_nestjs  # Matches your folder name
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
